@@ -155,6 +155,7 @@ When generating files:
 ├── COURSE_SUMMARY.md          # Master course summary
 ├── schedule.md                # Weekly timetable
 ├── deadlines.md               # All deadlines sorted by date
+├── dashboard.html             # Interactive dashboard (if user opts in)
 ├── {CourseName}/
 │   ├── Week{N}/               # Downloaded materials
 │   └── Homework/
@@ -165,6 +166,10 @@ Rules:
 - Semester format: `114-2` for 2026 Spring
 - Folder names: English, underscores (e.g., `Cloud_Native_App_Dev/`)
 - Dates: YYYY-MM-DD
+
+### Dashboard (optional)
+
+After generating markdown files, ask the user: "要不要生成一個 dashboard.html？" If yes, create a single self-contained HTML file. Read `references/dashboard-template.md` for the spec.
 
 ## Error Handling
 

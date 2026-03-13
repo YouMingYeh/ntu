@@ -83,6 +83,12 @@ npx skills add YouMingYeh/ntu
 git clone https://github.com/YouMingYeh/ntu.git ~/.claude/skills/ntu
 ```
 
+更新：
+
+```bash
+npx skills update
+```
+
 ## 使用 / Usage
 
 開一個對話，用你自己的話說就好：

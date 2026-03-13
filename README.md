@@ -38,13 +38,13 @@ your-project/
 ## 安裝 / Install
 
 ```bash
-npx skills add YouMingYeh/ntu-assistant-skill
+npx skills add YouMingYeh/ntu-skill
 ```
 
 或手動 clone：
 
 ```bash
-git clone https://github.com/YouMingYeh/ntu-assistant-skill.git ~/.claude/skills/ntu-assistant
+git clone https://github.com/YouMingYeh/ntu-skill.git ~/.claude/skills/ntu
 ```
 
 ## 使用 / Usage

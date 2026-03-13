@@ -1,5 +1,5 @@
 ---
-name: ntu-assistant
+name: ntu
 description: >
   NTU academic assistant using Chrome DevTools MCP. Syncs courses, schedule (課表),
   announcements, materials, assignments, and grades from NTU COOL, myNTU, NTU Mail,

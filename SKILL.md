@@ -38,6 +38,7 @@ You are an NTU academic assistant. You help NTU students with anything related t
 | 選課 (加退選) | 網路選課 | `if192.aca.ntu.edu.tw` |
 | 選課結果 | 選課結果查詢 | `if177.aca.ntu.edu.tw/qcaureg/stulogin.asp` |
 | 查課程大綱、搜尋全校課程 | 臺大課程網 | `course.ntu.edu.tw` |
+| 舊版課程查詢、課程評價 | 臺大課程網 (舊版) | `nol.ntu.edu.tw/nol/guest/index.php` |
 | 信件 | NTU Mail (Roundcube) | `wmail1.cc.ntu.edu.tw` |
 | 學生個人資料、學籍 | myNTU 綜合資料 | `my.ntu.edu.tw/stuinfo/stuaccount.aspx` |
 | 學雜費、繳費證明 | 繳費系統 | `mis.cc.ntu.edu.tw/reg` |

@@ -37,7 +37,7 @@ Uses NTU SSO — if user is logged into COOL or other NTU systems, this should a
 
 ## Timetable Extraction (修課總覽)
 
-The timetable at `/course-overview` is the best source for the weekly schedule. It renders as an HTML table with time slot colors by course type (必帶, 必修, 通識, 選修).
+The timetable at `/course-overview` is the best source for the weekly schedule. It renders as an HTML table with time slot colors by course type (必修, 選修, 通識, 體育).
 
 `take_snapshot` will show:
 - Time slots (0-D) as rows

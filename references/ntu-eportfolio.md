@@ -1,74 +1,71 @@
-# NTU ePortfolio Reference
+# 教務資訊服務網 (ePortfolio) Reference
 
-ePortfolio: `https://portal.aca.ntu.edu.tw/eportfolio/`
+Base URL: `https://portal.aca.ntu.edu.tw/eportfolio/`
 
-NTU's academic portfolio system tracks courses, credits, and extracurricular activities.
+Uses NTU SSO — if user is logged into COOL or other NTU systems, this should already be authenticated.
 
-## URL
-- Main: `https://portal.aca.ntu.edu.tw/eportfolio/`
-- May redirect to NTU SSO for login
+## Pages
 
-## Important Note
-- ePortfolio public profile pages were closed since September 2021
-- Student-facing dashboard and course/credit tracking may still be accessible after login
-- Functionality may be limited compared to pre-2021
+### 個人資訊
+| Page | URL | What's there |
+|------|-----|-------------|
+| 基本資料 | `/basic-info` | Student name, ID, department |
+| 導師資訊 | `/teacher-info` | Advisor info |
 
-## Authentication
-- Uses NTU SSO
-- `take_snapshot` after navigation to check login state
-- If redirected to SSO login → prompt user to log in
+### 學習歷程
+| Page | URL | What's there |
+|------|-----|-------------|
+| 課程地圖 | `/course-map` | Curriculum map, required/elective course structure |
+| 學習足跡 | `/learning-footprint` | Learning history overview |
+| 成績與名次 | `if190.aca.ntu.edu.tw/graderanking/index` | GPA, semester grades, class rank |
+| 修課總覽 | `/course-overview` | **Timetable (課表)** + course history by semester |
+| 修課檢視 | `reg.aca.ntu.edu.tw/GradeCheck/login` | Graduation credit check |
 
-## What to Extract
+### 活動經歷
+| Page | URL | What's there |
+|------|-----|-------------|
+| 社團經歷 | `/club` | Club activities |
+| 競賽成果 | `/competition` | Competition records |
+| 服務學習 | `/service` | Service learning records |
 
-### Course & Credit Tracking
-- Enrolled courses by semester
-- Credits earned vs. required (畢業學分)
-- Course categories: 必修, 選修, 通識, etc.
-- GPA if available
+### 其他
+| Page | URL | What's there |
+|------|-----|-------------|
+| 期中意見填答 | `investea.aca.ntu.edu.tw/midopinions/login.aspx` | Mid-term course feedback |
+| 期末意見填答 | `investea.aca.ntu.edu.tw/opinion/login.asp` | Final course feedback |
+| 教學助理 | `/ta-learning` | TA management |
 
-### Activity Records
-- Extracurricular activities logged
-- Awards, certificates
-- Service learning records
+## Timetable Extraction (修課總覽)
 
-## Extraction Approach
+The timetable at `/course-overview` is the best source for the weekly schedule. It renders as an HTML table with time slot colors by course type (必帶, 必修, 通識, 選修).
 
-1. Navigate to ePortfolio URL
-2. `take_snapshot` to check login and available content
-3. Look for navigation links to:
-   - 修課紀錄 (Course Records)
-   - 學分統計 (Credit Statistics)
-   - 活動紀錄 (Activity Records)
-4. Navigate to each section and `take_snapshot` or `evaluate_script` to extract tables
+`take_snapshot` will show:
+- Time slots (0-D) as rows
+- Weekdays (一-六) as columns
+- Course name + instructor in each cell
 
-### evaluate_script example
-```javascript
-// Extract course/credit tables
-const tables = document.querySelectorAll('table');
-const data = Array.from(tables).map(t => {
-  const rows = Array.from(t.querySelectorAll('tr'));
-  return rows.map(r => {
-    const cells = Array.from(r.querySelectorAll('td, th'));
-    return cells.map(c => c.innerText.trim());
-  });
-});
-JSON.stringify(data);
-```
+NTU time slots:
+| Slot | Time |
+|------|------|
+| 0 | 07:10-08:00 |
+| 1 | 08:10-09:00 |
+| 2 | 09:10-10:00 |
+| 3 | 10:20-11:10 |
+| 4 | 11:20-12:10 |
+| 5 | 12:20-13:10 |
+| 6 | 13:20-14:10 |
+| 7 | 14:20-15:10 |
+| 8 | 15:30-16:20 |
+| 9 | 16:30-17:20 |
+| 10 | 17:30-18:20 |
+| A | 18:25-19:15 |
+| B | 19:20-20:10 |
+| C | 20:15-21:05 |
+| D | 21:10-22:00 |
 
-## Output Format
-```markdown
-## ePortfolio Summary
-**Total Credits Earned:** 85 / 128 required
+## Grade Extraction
 
-### Credit Breakdown
-| Category | Earned | Required |
-|----------|--------|----------|
-| 必修 (Required) | 45 | 60 |
-| 選修 (Elective) | 30 | 48 |
-| 通識 (General) | 10 | 20 |
-```
-
-## Common Issues
-- Service may be partially unavailable (post-2021 changes)
-- If pages return 404 or maintenance notice, inform user and skip gracefully
-- Fall back to COOL enrollment data if ePortfolio is unavailable
+Navigate to `if190.aca.ntu.edu.tw/graderanking/index` and `take_snapshot` to get:
+- Semester-by-semester grades
+- GPA
+- Class rank

@@ -1,46 +1,24 @@
 # NTU Mail Reference
 
-NTU Mail: `https://ntumail.cc.ntu.edu.tw/`
-
-NTU provides email via Microsoft 365 (Outlook Web App) or a legacy webmail interface.
+NTU Mail uses Roundcube webmail.
 
 ## URL
-- Primary: `https://ntumail.cc.ntu.edu.tw/` (redirects to M365 login or webmail)
-- M365 direct: `https://outlook.office365.com/` (if NTU uses M365)
+- `wmail1.cc.ntu.edu.tw/rc/index.php`
+- `ntumail.cc.ntu.edu.tw` redirects here
 
 ## Authentication
-- Uses NTU SSO or Microsoft login
-- `take_snapshot` after navigation to check:
-  - Login page indicators: "Sign in", "登入", email/password fields
-  - Inbox indicators: "Inbox", "收件匣", unread count, email subjects
+- **Separate from NTU SSO** — needs its own login
+- Username: student ID (e.g., `r14944035`, no @domain)
+- Password: NTU password
+- Login form has two text inputs + LOGIN button
+- If user is already logged in, snapshot will show inbox
 
-## Extraction Approach
-
-### Snapshot-based
-1. Navigate to inbox
-2. `take_snapshot` to get accessibility tree
-3. Parse for:
-   - Unread email count
-   - Recent email subjects (last 10-20)
-   - Sender names and dates
-   - Email body content (if user requests)
-
-### What to extract
-- Total unread count
-- List of recent emails: subject, sender, date, read/unread status
-- Flagged/important emails if visible
-- Email body content when the user asks for it
-
-### Output format
-```markdown
-## NTU Mail Summary
-**Unread:** 5 emails
-
-| Date | From | Subject | Status |
-|------|------|---------|--------|
-| 2026-03-13 | 廖世偉 | Week 3 作業提醒 | Unread |
-| 2026-03-12 | 教務處 | 114-2 選課公告 | Read |
-```
+## Extraction
+1. Navigate to `wmail1.cc.ntu.edu.tw`
+2. `take_snapshot` — check for LOGIN button (not logged in) vs inbox content (logged in)
+3. If not logged in: ask user for credentials or to log in manually
+4. Once in inbox, `take_snapshot` to read emails
+5. Click on individual emails to read full content if needed
 
 ## Rules
 - Never attempt to send, delete, or modify emails

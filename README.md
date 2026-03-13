@@ -105,6 +105,21 @@ Sync my NTU COOL courses
 - Mail 只讀標題、寄件人、日期，不讀信件內容
 - 所有資料都留在你的電腦上
 
+## 推薦搭配 / Recommended Skills
+
+裝完這個 skill 之後，可以再裝幾個實用的：
+
+```bash
+# Anthropic 官方 skills（程式碼review、commit 等）
+npx skills add anthropics/skills
+
+# 讓 AI 寫出來的文字更像真人
+npx skills add blader/humanizer
+npx skills add kevintsai1202/Humanizer-zh-TW
+```
+
+更多 skills 可以到 [skills.sh](https://skills.sh/) 找。
+
 ## License
 
 MIT

@@ -1,16 +1,23 @@
 # NTU Assistant — Agent Skill
 
-每學期開學，你大概都得在 COOL、myNTU、Mail、ePortfolio 四個系統之間反覆跳轉，手動整理課程資訊。這個 skill 幫你用一句話搞定——它透過 Chrome DevTools MCP 直接從各系統抓資料，整理成 Markdown 檔案。
+NTU 的 AI 助手。透過 [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) 操作 COOL、myNTU、Mail、ePortfolio，幫你查課程、抓教材、整理作業、看成績、讀信——什麼都能問。
 
-Every semester, NTU students manually hop between COOL, myNTU, Mail, and ePortfolio to piece together their course info. This skill does it for you — it pulls data from each system via [Chrome DevTools MCP](https://github.com/nicolo-nicolo/chrome-devtools-mcp) and organizes everything into Markdown files.
+Your AI assistant for NTU. It operates COOL, myNTU, Mail, and ePortfolio through Chrome DevTools MCP — ask it anything about your courses, assignments, grades, or emails.
 
 支援 Claude Code、Codex、OpenCode、Cursor、Copilot 等所有 [skills](https://skills.sh) 相容的 AI agent。
 
 ## 功能 / What it does
 
-從 NTU COOL 抓課程、公告、教材，從 myNTU 拉課表，把所有作業截止日期整理成一份清單。也可以選擇自動下載 PDF 教材。NTU Mail 和 ePortfolio 的資料也能抓。
+你可以叫它做的事：
 
-最後產出長這樣：
+- 查課程資訊、公告、成績
+- 下載教材、講義 PDF
+- 整理課表、作業截止日期
+- 讀 NTU Mail 信件
+- 查 ePortfolio 學分進度
+- 把資料整理成 Markdown 檔案輸出
+
+需要輸出檔案的時候，它會自動建好資料夾結構：
 
 ```
 your-project/
@@ -19,7 +26,6 @@ your-project/
 ├── deadlines.md           # 截止日期（按時間排序）
 ├── Course_Name/
 │   ├── Week1/             # 下載的教材
-│   ├── Week2/
 │   └── Homework/
 ```
 
@@ -118,14 +124,12 @@ npx skills update
 /ntu What assignments are due this week?
 ```
 
-它會自己確認 Chrome MCP 有沒有連上、你有沒有登入（登入是你自己在 Chrome 操作，skill 不碰密碼），然後從各系統抓資料，在你的目錄下產生整理好的檔案。
+第一次用的時候，它會確認 Chrome MCP 有沒有連上，然後幫你登入（你可以直接給帳密，或自己在 Chrome 裡登入）。之後就直接用。
 
 ## 安全 / Security
 
-- 登入都是你自己在 Chrome 裡手動操作，skill 不會自動填密碼
-- 資料用你瀏覽器的 session 抓取，不另存帳號資訊
-- Mail、ePortfolio 等資料都只在你本機處理
-- 所有資料都留在你的電腦上
+- 帳密只用來在 Chrome 登入，不會另外儲存
+- 所有資料都在你本機處理，不上傳到任何地方
 
 ## 相關資源 / Resources
 

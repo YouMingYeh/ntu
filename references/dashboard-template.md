@@ -2,6 +2,10 @@
 
 Generate a single `dashboard.html`. Self-contained, all CSS in `<style>`. No external dependencies. No JavaScript.
 
+## Design Direction
+
+Follow the `/web-design-guidelines` and `/frontend-design` skills. The aesthetic direction is **refined minimalism** — Notion and shadcn/ui are the references. Execute with restraint, precision, and careful attention to spacing and typography. No generic AI slop, no flashy effects, no decoration for decoration's sake.
+
 ## CRITICAL: Style Rules
 
 The design must look like Notion or shadcn/ui. That means:

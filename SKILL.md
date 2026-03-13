@@ -31,34 +31,44 @@ Before doing anything, verify Chrome DevTools MCP is available:
 
 **Chinese guide:**
 ```
-Chrome DevTools MCP 尚未連線。請按以下步驟設定：
+Chrome DevTools MCP 尚未連線。請用以下指令安裝：
 
-1. 關閉所有 Chrome 視窗
-2. 用以下指令重新啟動 Chrome（開啟遠端除錯埠）：
-   macOS:
-   /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222
+Claude Code:
+  claude mcp add chrome-devtools -- npx chrome-devtools-mcp@latest
 
-   Windows:
-   "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222
+或在 MCP 設定檔加入：
+  {
+    "mcpServers": {
+      "chrome-devtools": {
+        "command": "npx",
+        "args": ["-y", "chrome-devtools-mcp@latest"]
+      }
+    }
+  }
 
-3. 確認 Chrome MCP server 已在 Claude Code 設定中啟用
-4. 完成後請告訴我，我會重新檢查連線
+安裝後重啟 agent，MCP 會自動啟動 Chrome。
+完成後請告訴我，我會重新檢查連線。
 ```
 
 **English guide:**
 ```
-Chrome DevTools MCP is not connected. Follow these steps:
+Chrome DevTools MCP is not connected. Install it with:
 
-1. Close all Chrome windows
-2. Relaunch Chrome with remote debugging enabled:
-   macOS:
-   /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222
+Claude Code:
+  claude mcp add chrome-devtools -- npx chrome-devtools-mcp@latest
 
-   Windows:
-   "C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222
+Or add to your MCP config:
+  {
+    "mcpServers": {
+      "chrome-devtools": {
+        "command": "npx",
+        "args": ["-y", "chrome-devtools-mcp@latest"]
+      }
+    }
+  }
 
-3. Ensure Chrome MCP server is enabled in your Claude Code settings
-4. Let me know when ready, and I'll re-check the connection
+Restart your agent after setup — the MCP server will launch Chrome automatically.
+Let me know when ready, and I'll re-check the connection.
 ```
 
 3. If `list_pages` succeeds → proceed to Phase 1.

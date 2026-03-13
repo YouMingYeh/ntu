@@ -1,8 +1,10 @@
-# NTU Assistant — Claude Code Skill
+# NTU Assistant — Agent Skill
 
-每學期開學，你大概都得在 COOL、myNTU、Mail、ePortfolio 四個系統之間反覆跳轉，手動整理課程資訊。這個 Claude Code skill 幫你用一句話搞定——它透過 Chrome DevTools MCP 直接從各系統抓資料，整理成 Markdown 檔案。
+每學期開學，你大概都得在 COOL、myNTU、Mail、ePortfolio 四個系統之間反覆跳轉，手動整理課程資訊。這個 skill 幫你用一句話搞定——它透過 Chrome DevTools MCP 直接從各系統抓資料，整理成 Markdown 檔案。
 
-Every semester, NTU students manually hop between COOL, myNTU, Mail, and ePortfolio to piece together their course info. This [Claude Code skill](https://docs.anthropic.com/en/docs/claude-code/skills) does it for you — it pulls data from each system via Chrome DevTools MCP and organizes everything into Markdown files.
+Every semester, NTU students manually hop between COOL, myNTU, Mail, and ePortfolio to piece together their course info. This skill does it for you — it pulls data from each system via [Chrome DevTools MCP](https://github.com/nicolo-nicolo/chrome-devtools-mcp) and organizes everything into Markdown files.
+
+支援 Claude Code、Codex、OpenCode、Cursor、Copilot 等所有 [skills](https://skills.sh) 相容的 AI agent。
 
 ## 功能 / What it does
 
@@ -23,33 +25,66 @@ your-project/
 
 ## 前置需求 / Prerequisites
 
-1. 裝好 [Claude Code](https://docs.anthropic.com/en/docs/claude-code)
-2. 設定 Chrome DevTools MCP server（[設定教學](https://github.com/anthropics/anthropic-quickstarts/tree/main/chrome-devtools-mcp)）
-3. 用以下指令開 Chrome：
+1. 任何支援 skills 的 AI agent（Claude Code、Codex、OpenCode、Cursor 等）
+2. Chrome DevTools MCP server
+
+裝 Chrome DevTools MCP 只要一行：
 
 ```bash
-# macOS
-/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222
+# Claude Code
+claude mcp add chrome-devtools -- npx chrome-devtools-mcp@latest
 
-# Windows
-"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222
+# 或手動加到 MCP 設定
 ```
+
+<details>
+<summary>手動 MCP 設定（JSON）</summary>
+
+在你的 MCP 設定檔加入：
+
+```json
+{
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["-y", "chrome-devtools-mcp@latest"]
+    }
+  }
+}
+```
+
+MCP 啟動後會自動開 Chrome，不需要手動跑 `--remote-debugging-port`。
+
+如果要連到已開啟的 Chrome：
+
+```json
+{
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["-y", "chrome-devtools-mcp@latest", "--browser-url=http://127.0.0.1:9222"]
+    }
+  }
+}
+```
+
+</details>
 
 ## 安裝 / Install
 
 ```bash
-npx skills add YouMingYeh/ntu-skill
+npx skills add YouMingYeh/ntu
 ```
 
 或手動 clone：
 
 ```bash
-git clone https://github.com/YouMingYeh/ntu-skill.git ~/.claude/skills/ntu
+git clone https://github.com/YouMingYeh/ntu.git ~/.claude/skills/ntu
 ```
 
 ## 使用 / Usage
 
-開一個 Claude Code 對話，直接說：
+開一個對話，直接說：
 
 ```
 幫我同步 NTU COOL 的課程資料

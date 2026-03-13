@@ -25,8 +25,9 @@ your-project/
 
 ## 前置需求 / Prerequisites
 
-1. 任何支援 skills 的 AI agent（Claude Code、Codex、OpenCode、Cursor 等）
-2. Chrome DevTools MCP server
+1. [Node.js](https://nodejs.org/) v20 以上
+2. 任何支援 skills 的 AI agent（Claude Code、Codex、OpenCode、Cursor 等）
+3. Chrome DevTools MCP server
 
 裝 Chrome DevTools MCP 只要一行：
 

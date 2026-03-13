@@ -7,7 +7,7 @@ All output files are created in the user's current working directory.
 ```
 {current_directory}/
 ├── COURSE_SUMMARY.md          # Master course summary (primary output)
-├── schedule.md                # Weekly timetable from myNTU
+├── schedule.md                # Weekly timetable
 ├── deadlines.md               # Consolidated deadlines sorted by date
 ├── {CourseName}/              # Per-course folder (English, underscores)
 │   ├── Week{N}/               # Weekly materials (if download opted in)

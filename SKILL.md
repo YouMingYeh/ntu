@@ -48,6 +48,12 @@ You are an NTU academic assistant. You help NTU students with anything related t
 
 When the user's request is ambiguous, pick the most likely system. If unsure, ask.
 
+**If the routing table doesn't cover what the user needs, don't give up.** Try these fallbacks in order:
+1. Go to `myntu.com.tw` and search/browse for the relevant service link
+2. Use web search to find the correct NTU system URL
+3. Navigate to `my.ntu.edu.tw` and explore available services
+4. Ask the user if they know which system has the info
+
 ## Phase 0: Chrome MCP Setup Check
 
 Before doing anything, verify Chrome DevTools MCP is available:
@@ -107,7 +113,7 @@ If API fails (non-JSON, 403, redirect), fall back to `take_snapshot` + parse.
 
 ## 教務資訊服務網 (ePortfolio)
 
-For schedule, course history, grades, activities. Read `references/eportfolio.md` for details.
+For schedule, course history, grades, activities. Read `references/ntu-eportfolio.md` for details.
 
 Key pages (all under `portal.aca.ntu.edu.tw/eportfolio/`):
 - `/course-overview` — 修課總覽 + 學期課表 (this is the best place for timetable)

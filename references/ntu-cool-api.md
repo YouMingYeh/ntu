@@ -29,11 +29,11 @@ GET /api/v1/courses?enrollment_state=active&per_page=50
 Returns array of course objects:
 ```json
 [{
-  "id": 61499,
-  "name": "巨量資料系統 Big Data Systems",
-  "course_code": "CSIE5043",
-  "enrollment_term_id": 123,
-  "teachers": [{"display_name": "廖世偉"}],
+  "id": 12345,
+  "name": "資料結構 Data Structures",
+  "course_code": "CSIE1212",
+  "enrollment_term_id": 100,
+  "teachers": [{"display_name": "王大明"}],
   "enrollments": [{"type": "StudentEnrollment", "enrollment_state": "active"}]
 }]
 ```
@@ -52,11 +52,11 @@ GET /api/v1/courses/:course_id/discussion_topics?only_announcements=true&per_pag
 Returns array:
 ```json
 [{
-  "id": 12345,
+  "id": 67890,
   "title": "Week 3 公告",
   "message": "<p>HTML content...</p>",
   "posted_at": "2026-03-10T10:00:00Z",
-  "author": {"display_name": "廖世偉"}
+  "author": {"display_name": "王大明"}
 }]
 ```
 
@@ -104,13 +104,13 @@ GET /api/v1/courses/:course_id/assignments?order_by=due_at&per_page=50
 Returns:
 ```json
 [{
-  "id": 378948,
-  "name": "HW 1 - Design Thinking",
+  "id": 99999,
+  "name": "HW 1 - Algorithm Design",
   "description": "<p>HTML...</p>",
   "due_at": "2026-03-30T16:01:00Z",
   "points_possible": 100,
   "submission_types": ["online_upload"],
-  "html_url": "https://cool.ntu.edu.tw/courses/56440/assignments/378948",
+  "html_url": "https://cool.ntu.edu.tw/courses/12345/assignments/99999",
   "has_submitted_submissions": false
 }]
 ```

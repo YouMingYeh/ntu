@@ -174,7 +174,7 @@ Rules:
 
 ## User Context
 
-On first use, try to pick up the user's student ID and name from the page (e.g., ePortfolio shows "R14944035" and name). Save this to memory so future conversations don't need to re-extract it. This is useful for:
+On first use, try to pick up the user's student ID and name from the page (e.g., ePortfolio shows the student ID and name). Save this to memory so future conversations don't need to re-extract it. This is useful for:
 - Knowing which student is logged in
 - Personalizing output files
 - Pre-filling forms if needed

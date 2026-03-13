@@ -8,7 +8,7 @@ NTU Mail uses Roundcube webmail.
 
 ## Authentication
 - **Separate from NTU SSO** — needs its own login
-- Username: student ID (e.g., `r14944035`, no @domain)
+- Username: student ID (e.g., `b12345678`, no @domain)
 - Password: NTU password
 - Login form has two text inputs + LOGIN button
 - If user is already logged in, snapshot will show inbox

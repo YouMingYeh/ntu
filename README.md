@@ -91,31 +91,31 @@ npx skills update
 
 ## 使用 / Usage
 
-開一個對話，用你自己的話說就好：
+在對話中輸入 `/ntu` 加上你想做的事：
 
 ```
-幫我下載所有課程教材
+/ntu 幫我下載所有課程教材
 ```
 ```
-幫我整理課表、近期待辦事項、作業和公告
+/ntu 幫我整理課表、近期待辦事項、作業和公告
 ```
 ```
-這週有什麼作業要交？
+/ntu 這週有什麼作業要交？
 ```
 ```
-新學期開始了，幫我同步所有課程資料
+/ntu 新學期開始了，幫我同步所有課程資料
 ```
 ```
-把 COOL 上面的成績整理給我看
+/ntu 把 COOL 上面的成績整理給我看
 ```
 
 英文也行：
 
 ```
-Download all my course materials from COOL
+/ntu Download all my course materials from COOL
 ```
 ```
-What assignments are due this week?
+/ntu What assignments are due this week?
 ```
 
 它會自己確認 Chrome MCP 有沒有連上、你有沒有登入（登入是你自己在 Chrome 操作，skill 不碰密碼），然後從各系統抓資料，在你的目錄下產生整理好的檔案。

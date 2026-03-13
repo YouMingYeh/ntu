@@ -126,6 +126,8 @@ npx skills update
 
 第一次用的時候，它會確認 Chrome MCP 有沒有連上，然後幫你登入（你可以直接給帳密，或自己在 Chrome 裡登入）。之後就直接用。
 
+> **安裝提示：** `npx skills add` 過程中會問幾個問題，全部按 Enter 用預設值就好。
+
 ## 安全 / Security
 
 - 帳密只用來在 Chrome 登入，不會另外儲存

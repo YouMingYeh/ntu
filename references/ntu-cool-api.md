@@ -163,7 +163,30 @@ GET /api/v1/courses/:course_id/files/:file_id
 ```
 The `url` field contains a time-limited signed download URL.
 
-### 7. User Profile (self)
+### 7. Discussion Topics (per course)
+```
+GET /api/v1/courses/:course_id/discussion_topics?per_page=30
+```
+Returns all discussion topics (without `only_announcements` filter):
+```json
+[{
+  "id": 11111,
+  "title": "Week 3 討論：MapReduce 應用",
+  "message": "<p>HTML content...</p>",
+  "posted_at": "2026-03-10T10:00:00Z",
+  "author": {"display_name": "王大明"},
+  "discussion_subentry_count": 5
+}]
+```
+
+**evaluate_script snippet:**
+```javascript
+const r = await fetch('https://cool.ntu.edu.tw/api/v1/courses/COURSE_ID/discussion_topics?per_page=30', {credentials:'include', headers:{'Accept':'application/json'}});
+const d = await r.json();
+JSON.stringify(d.map(t => ({id:t.id, title:t.title, date:t.posted_at, replies:t.discussion_subentry_count})));
+```
+
+### 8. User Profile (self)
 ```
 GET /api/v1/users/self/profile
 ```

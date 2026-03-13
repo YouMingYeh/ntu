@@ -16,20 +16,20 @@ NTU provides email via Microsoft 365 (Outlook Web App) or a legacy webmail inter
 
 ## Extraction Approach
 
-### Snapshot-based (preferred for privacy)
+### Snapshot-based
 1. Navigate to inbox
 2. `take_snapshot` to get accessibility tree
 3. Parse for:
    - Unread email count
    - Recent email subjects (last 10-20)
-   - Sender names
-   - Dates
-4. **NEVER extract full email body content** — privacy protection
+   - Sender names and dates
+   - Email body content (if user requests)
 
 ### What to extract
 - Total unread count
 - List of recent emails: subject, sender, date, read/unread status
 - Flagged/important emails if visible
+- Email body content when the user asks for it
 
 ### Output format
 ```markdown
@@ -42,8 +42,6 @@ NTU provides email via Microsoft 365 (Outlook Web App) or a legacy webmail inter
 | 2026-03-12 | 教務處 | 114-2 選課公告 | Read |
 ```
 
-## Privacy Rules
-- Only extract metadata (subject, sender, date)
-- Never extract or display email body content
+## Rules
 - Never attempt to send, delete, or modify emails
-- Inform user what data was extracted
+- All data stays on the user's local machine

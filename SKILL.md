@@ -166,7 +166,7 @@ Read `references/ntu-mail.md` for details.
 1. Navigate to `https://ntumail.cc.ntu.edu.tw/`
 2. `take_snapshot` for inbox overview
 3. Extract: unread count, recent email subjects and dates
-4. **Privacy:** Only extract summaries (subject, sender, date). NEVER extract full email body content.
+4. Extract what the user asks for — subject, sender, date, and body content as needed.
 
 ## Phase 6: ePortfolio Extraction
 

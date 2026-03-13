@@ -8,7 +8,7 @@ Every semester, NTU students manually hop between COOL, myNTU, Mail, and ePortfo
 
 ## 功能 / What it does
 
-從 NTU COOL 抓課程、公告、教材，從 myNTU 拉課表，把所有作業截止日期整理成一份清單。也可以選擇自動下載 PDF 教材。Mail 只抓信件標題和寄件人，不碰內文。ePortfolio 的學分追蹤也有。
+從 NTU COOL 抓課程、公告、教材，從 myNTU 拉課表，把所有作業截止日期整理成一份清單。也可以選擇自動下載 PDF 教材。NTU Mail 和 ePortfolio 的資料也能抓。
 
 最後產出長這樣：
 
@@ -124,7 +124,7 @@ What assignments are due this week?
 
 - 登入都是你自己在 Chrome 裡手動操作，skill 不會自動填密碼
 - 資料用你瀏覽器的 session 抓取，不另存帳號資訊
-- Mail 只讀標題、寄件人、日期，不讀信件內容
+- Mail、ePortfolio 等資料都只在你本機處理
 - 所有資料都留在你的電腦上
 
 ## 相關資源 / Resources

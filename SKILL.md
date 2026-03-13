@@ -45,7 +45,7 @@ You are an NTU academic assistant. You help NTU students with anything related t
 | 付款查詢 | 付款通知 | `my.ntu.edu.tw/pay/Default.aspx` |
 | 行事曆 (學校行事曆) | 臺大行事曆 | `www.aca.ntu.edu.tw/w/aca/calendar` |
 | 期中/期末教學意見 | 意見填答 | `investea.aca.ntu.edu.tw` |
-| NTU 常用連結總覽 | myNTU 入口 | `myntu.com.tw` |
+| NTU 常用連結總覽 | myNTU 入口 (非官方社群網站) | `myntu.com.tw` |
 
 When the user's request is ambiguous, pick the most likely system. If unsure, ask.
 
@@ -181,6 +181,7 @@ After generating markdown files, ask the user: "要不要生成一個 dashboard.
 | NTU Mail needs separate login | Roundcube login page | Handle independently |
 | 0 active courses | Empty API response | "目前沒有進行中的課程" |
 | System under maintenance | Maintenance page in snapshot | Inform user, skip |
+| Course access denied | 403 response | "你沒有這門課的權限" — skip course |
 | Canvas API rate limited | 429 response | Wait 3s, retry once |
 | Network timeout | No response | "連線逾時，請確認網路連線" |
 

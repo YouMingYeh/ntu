@@ -19,6 +19,15 @@ Generate a single `dashboard.html` file. Self-contained — all CSS inline in `<
 One page, scroll top to bottom. Sections in this order:
 
 ```html
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NTU {semester} Dashboard</title>
+</head>
+<body>
+
 <header>
   <h1>NTU {semester} Dashboard</h1>
   <p>Last updated: {YYYY-MM-DD}</p>
@@ -27,7 +36,7 @@ One page, scroll top to bottom. Sections in this order:
 <section id="schedule">
   <h2>Schedule</h2>
   <!-- Weekly timetable as <table> -->
-  <!-- Columns: Mon-Fri, Rows: time slots -->
+  <!-- Columns: Mon-Sat, Rows: time slots (0-D) -->
   <!-- Empty cells stay empty, no filler -->
 </section>
 
@@ -61,6 +70,16 @@ One page, scroll top to bottom. Sections in this order:
     </ul>
   </article>
 </section>
+
+<section id="grades">
+  <h2>Grades</h2>
+  <!-- Simple <table> -->
+  <!-- Columns: Course, Score, Grade -->
+  <!-- Only show if grade data is available -->
+</section>
+
+</body>
+</html>
 ```
 
 ## Rules

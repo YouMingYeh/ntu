@@ -84,19 +84,34 @@ git clone https://github.com/YouMingYeh/ntu.git ~/.claude/skills/ntu
 
 ## 使用 / Usage
 
-開一個對話，直接說：
+開一個對話，用你自己的話說就好：
 
 ```
-幫我同步 NTU COOL 的課程資料
+幫我下載所有課程教材
+```
+```
+幫我整理課表、近期待辦事項、作業和公告
+```
+```
+這週有什麼作業要交？
+```
+```
+新學期開始了，幫我同步所有課程資料
+```
+```
+把 COOL 上面的成績整理給我看
 ```
 
+英文也行：
+
 ```
-Sync my NTU COOL courses
+Download all my course materials from COOL
+```
+```
+What assignments are due this week?
 ```
 
-它會先確認 Chrome MCP 有連上，然後檢查你有沒有登入（登入永遠是你自己在 Chrome 裡操作，skill 不會碰密碼），接著用 Canvas REST API 抓資料，最後在你的目錄下產生整理好的 Markdown 檔案。
-
-跟 NTU 相關的指令都會觸發這個 skill，像是「課表」「公告」「成績」「作業截止日期」「下載教材」「新學期」之類的。
+它會自己確認 Chrome MCP 有沒有連上、你有沒有登入（登入是你自己在 Chrome 操作，skill 不碰密碼），然後用 Canvas REST API 抓資料，在你的目錄下產生整理好的檔案。
 
 ## 安全 / Security
 

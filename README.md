@@ -1,53 +1,34 @@
 # NTU Assistant — Agent Skill
 
-NTU 的 AI 助手。透過 [Chrome DevTools MCP](https://github.com/ChromeDevTools/chrome-devtools-mcp) 操作 COOL、myNTU、Mail、ePortfolio，幫你查課程、抓教材、整理作業、看成績、讀信——什麼都能問。
+NTU 的 AI 助手。幫你查課程、抓教材、整理作業、看成績、讀信，什麼都能問。它會自己操作 Chrome 去 COOL、myNTU、Mail、ePortfolio 幫你把資料抓回來。
 
-Your AI assistant for NTU. It operates COOL, myNTU, Mail, and ePortfolio through Chrome DevTools MCP — ask it anything about your courses, assignments, grades, or emails.
-
-支援 Claude Code、Codex、OpenCode、Cursor、Copilot 等所有 [skills](https://skills.sh) 相容的 AI agent。
+Your AI assistant for NTU. It controls Chrome to pull data from COOL, myNTU, Mail, and ePortfolio — ask it anything about your courses, assignments, grades, or emails.
 
 ## 功能 / What it does
 
-你可以叫它做的事：
-
 - 查課程資訊、公告、成績
-- 下載教材、講義 PDF
+- 下載講義、簡報、PDF
 - 整理課表、作業截止日期
 - 讀 NTU Mail 信件
-- 查 ePortfolio 學分進度
-- 把資料整理成 Markdown 檔案輸出
+- 查學分進度
+- 做成一頁式課程總覽網頁
 
-需要輸出檔案的時候，它會自動建好資料夾結構：
+## 事前準備 / Before you start
 
-```
-your-project/
-├── COURSE_SUMMARY.md      # 課程總覽
-├── schedule.md            # 週課表
-├── deadlines.md           # 截止日期（按時間排序）
-├── Course_Name/
-│   ├── Week1/             # 下載的教材
-│   └── Homework/
-```
-
-## 前置需求 / Prerequisites
-
-1. [Node.js](https://nodejs.org/) v20 以上
-2. 任何支援 skills 的 AI agent（Claude Code、Codex、OpenCode、Cursor 等）
-3. Chrome DevTools MCP server
-
-裝 Chrome DevTools MCP 只要一行：
+1. 裝好 [Node.js](https://nodejs.org/)（v20 以上）
+2. 裝好一個支援 skills 的 AI 工具（[Claude Code](https://claude.com/claude-code)、Codex、Cursor 等都行）
+3. 讓 AI 工具可以操作 Chrome — 在終端機貼上這行：
 
 ```bash
-# Claude Code
 claude mcp add chrome-devtools -- npx chrome-devtools-mcp@latest
-
-# 或手動加到 MCP 設定
 ```
 
-<details>
-<summary>手動 MCP 設定（JSON）</summary>
+這會讓 AI 工具在需要時自動打開 Chrome 幫你操作，不用自己手動開。
 
-在你的 MCP 設定檔加入：
+<details>
+<summary>其他 AI 工具的設定方式</summary>
+
+找到你的 AI 工具的 MCP 設定檔，加入：
 
 ```json
 {
@@ -60,90 +41,78 @@ claude mcp add chrome-devtools -- npx chrome-devtools-mcp@latest
 }
 ```
 
-MCP 啟動後會自動開 Chrome，不需要手動跑 `--remote-debugging-port`。
-
-如果要連到已開啟的 Chrome：
-
-```json
-{
-  "mcpServers": {
-    "chrome-devtools": {
-      "command": "npx",
-      "args": ["-y", "chrome-devtools-mcp@latest", "--browser-url=http://127.0.0.1:9222"]
-    }
-  }
-}
-```
-
 </details>
 
 ## 安裝 / Install
+
+在終端機輸入：
 
 ```bash
 npx skills add YouMingYeh/ntu
 ```
 
-或手動 clone：
+安裝過程會問你幾個問題，**全部按 Enter 就好。**
 
-```bash
-git clone https://github.com/YouMingYeh/ntu.git ~/.claude/skills/ntu
-```
-
-更新：
+更新到最新版：
 
 ```bash
 npx skills update
 ```
 
-## 使用 / Usage
+<details>
+<summary>手動安裝</summary>
 
-在對話中輸入 `/ntu` 加上你想做的事：
+```bash
+git clone https://github.com/YouMingYeh/ntu.git ~/.claude/skills/ntu
+```
+
+</details>
+
+## 怎麼用 / Usage
+
+打開 AI 工具，輸入 `/ntu` 加上你想做的事就好：
 
 ```
 /ntu 幫我下載所有課程教材
 ```
 ```
-/ntu 幫我整理課表、近期待辦事項、作業和公告
+/ntu 整理課表和近期作業
 ```
 ```
 /ntu 這週有什麼作業要交？
 ```
 ```
-/ntu 新學期開始了，幫我同步所有課程資料
+/ntu 新學期，幫我同步所有課程
 ```
 ```
-/ntu 把 COOL 上面的成績整理給我看
+/ntu 幫我看成績
 ```
 
 英文也行：
 
 ```
-/ntu Download all my course materials from COOL
+/ntu Download all course materials
 ```
 ```
-/ntu What assignments are due this week?
+/ntu What's due this week?
 ```
 
-第一次用的時候，它會確認 Chrome MCP 有沒有連上，然後幫你登入（你可以直接給帳密，或自己在 Chrome 裡登入）。之後就直接用。
-
-> **安裝提示：** `npx skills add` 過程中會問幾個問題，全部按 Enter 用預設值就好。
+第一次用的時候，它會自動打開 Chrome，然後問你要不要給帳密幫你登入 NTU，或你自己先在 Chrome 登入好再告訴它。登入一次之後，各個 NTU 系統就都通了。
 
 ## 安全 / Security
 
-- 帳密只用來在 Chrome 登入，不會另外儲存
-- 所有資料都在你本機處理，不上傳到任何地方
+- 帳密只用來當場在 Chrome 填入登入，不會存在任何地方
+- 所有資料都在你自己的電腦上處理
 
-## 相關資源 / Resources
+## 推薦搭配 / Recommended skills
 
-不知道 skills 是什麼的話，可以先看這些：
+不知道 skills 是什麼？可以先看 [skills.sh](https://skills.sh/)。
 
-- [skills.sh](https://skills.sh/) — skills 搜尋引擎，找找有什麼好用的
-- [anthropics/skills](https://github.com/anthropics/skills) — Anthropic 官方 skills，PDF、Word、PPT、Excel 文件處理都有
+其他好用的 skills：
 
-寫報告或文章的時候，AI 味太重？這兩個 skill 可以幫你修：
-
-- [blader/humanizer](https://github.com/blader/humanizer) — 英文去 AI 味
-- [kevintsai1202/Humanizer-zh-TW](https://github.com/kevintsai1202/Humanizer-zh-TW) — 中文去 AI 味
+- [anthropics/skills](https://github.com/anthropics/skills) — 處理 PDF、Word、PPT、Excel
+- [blader/humanizer](https://github.com/blader/humanizer) — 英文文章去 AI 味
+- [kevintsai1202/Humanizer-zh-TW](https://github.com/kevintsai1202/Humanizer-zh-TW) — 中文文章去 AI 味
 
 裝法都一樣：
 

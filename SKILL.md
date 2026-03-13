@@ -169,7 +169,7 @@ Rules:
 
 ### Dashboard (optional)
 
-After generating markdown files, ask the user: "要不要生成一個 dashboard.html？" If yes, create a single self-contained HTML file. Read `references/dashboard-template.md` for the spec.
+After generating markdown files, ask the user: "要不要幫你做一個好看的課程總覽網頁？" If yes, create a single self-contained HTML file following `references/dashboard-template.md`. After writing the file, automatically open it in Chrome using `navigate_page` with the local file URL (`file:///path/to/dashboard.html`).
 
 ## Error Handling
 

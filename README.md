@@ -70,7 +70,7 @@ git clone https://github.com/YouMingYeh/ntu.git ~/.claude/skills/ntu
 
 ## 怎麼用 / Usage
 
-打開 AI 工具，輸入 `/ntu` 就好。什麼都不加，它會自動幫你同步所有課程、整理課表和作業、抓重點。也可以加上具體的事：
+打開 AI 工具，輸入 `/ntu` 就好。什麼都不加，它會列出所有能幫你做的事讓你選。也可以直接加上你想做的事：
 
 ```
 /ntu
